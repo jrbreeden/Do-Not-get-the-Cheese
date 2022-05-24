@@ -6,6 +6,12 @@ As a user I want to
 .Adjust the speed that the mousetraps come in over time to create a challenging effect to the game.
 .Have the canvas background to simulate the mouse moving.
 
+Game Mechanics
+.Player plays a mouse
+.Player controls the mouse with arrow keys
+.Player has to try to get the chesse without getting trapped by the mousetrap
+
+
 Technologies Used
 HTML
 CSS
