@@ -19,4 +19,4 @@ JavaScript (logic and DOM manipulation)
 Canvas 
 
 ## Wireframes (what game will look like):
-https://github.com/jrbreeden/Do-Not-get-the-Cheese/issues/1#issue-1247134155
+
