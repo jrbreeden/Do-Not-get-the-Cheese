@@ -20,3 +20,4 @@ Canvas
 
 ## Wireframes (what game will look like):
 
+[Do Not Get the Cheese.pdf](https://github.com/jrbreeden/Do-Not-get-the-Cheese/files/8766346/Do.Not.Get.the.Cheese.pdf)
