@@ -114,7 +114,7 @@ function addNewShrek() {
        
            x = 50
        
-       mouse = new Crawler(x, y, "#bada55", 40, 80)
+       mouse = new Crawler(x, y, "#0a8387", 40, 80)
    }, 1000)
    return true;
 }
