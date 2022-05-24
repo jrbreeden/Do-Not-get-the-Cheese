@@ -21,3 +21,4 @@ Canvas
 ## Wireframes (what game will look like):
 
 
+<img src ="/Users/jrbre/Desktop/GA/projects/Do-Not-get-the-Cheese/imag/Screen Shot 2022-05-24 at 7.20.12 PM.png">
