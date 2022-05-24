@@ -1,4 +1,4 @@
-et game = document.querySelector("#game");
+let game = document.querySelector("#game");
 let mouse;
 let mousetrap;
 let ctx = game.getContext("2d"); 
