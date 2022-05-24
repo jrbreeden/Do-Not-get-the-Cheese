@@ -3,7 +3,6 @@ Premise: The board game Mousetrap was my favorite game to play with my brother. 
 User Story
 As a user I want to
 . Trap the mouse from getting the cheese with a mousetrap.
-.click on the white space on the board to bring the trap.
 .Adjust the speed that the mousetraps come in over time to create a challenging effect to the game.
 .Have the canvas background to simulate the mouse moving.
 
