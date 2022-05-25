@@ -38,8 +38,8 @@ window.addEventListener("DOMContentLoaded", function (p){
  let cheeseY = Math.floor(Math.random() * game.height);
  
  mouse = new Crawler(100, 100, purple, 60, 70);
-  mousetrap = new Crawler(randomX, randomY, green, 80, 80);
-  cheese = new Crawler(cheeseX, cheeseY, yellow, 40, 50);
+ mousetrap = new Crawler(randomX, randomY, green, 80, 80);
+cheese = new Crawler(cheeseX, cheeseY, yellow, 40, 50);
   
   const runGame = setInterval(gameLoop, 120);
 })
@@ -49,9 +49,9 @@ window.addEventListener("DOMContentLoaded", function (p){
 function movementHandler(p){
    console.log("the key that was pressed was: " + p.key);
  
-   // if(e.key === "ArrowUp"){
+   // if(p.key === "ArrowUp"){
  
-   // } else if(e.key === "ArrowDown"){
+   // } else if(p.key === "ArrowDown"){
  
    // }
  
@@ -108,49 +108,53 @@ function detectHit(p1, obstacle){
        p1.x < obstacle.x + obstacle.width; 
  
    if (hitTest){
-       
-  let gameScore = Number(score.textContent); 
-       let newScore = gameScore + 100;
+      let gameScore = Number(score.textContent); 
+       let newScore = gameScore - 100;
        score.textContent = newScore;
-       return addNewMouse();
+       return false;
    } else{
        return false;
    }
 }
 
  function detectCheese(p1, cheese){
-    let hitTest =
+    let cheeseTest =
         p1.y + p1.height > cheese.y &&
         p1.y < cheese.y + cheese.height &&
         p1.x + p1.width > cheese.x &&
         p1.x < cheese.x + cheese.width; 
   
-    if (hitTest){
-        if (mousetrap.X + mousetrap.Y ){
-            //     run this code
-            // } else {
-            //     run this code
-            // }
-        
+    if (cheeseTest){
         // if (mousetrap) x and y are within 10px of cheese x y, then player1 will lose life and game restarts
         // else cheese is further away, collect cheese and collect point
-   let gameScore = Number(score.textContent); 
+        let gameScore = Number(score.textContent); 
         let newScore = gameScore + 100;
         score.textContent = newScore;
-        return addNewMouse();
+        return false;
+      
     } else{
         return false;
     }
  }
  
-function addNewMouse() {
-   mouse.alive = false;
-   setTimeout(function(){
-       let x = Math.floor(Math.random() * game.width - 100) + 50; 
-       let y = Math.floor(Math.random() * game.height -100) + 50;
-      mouse = new Crawler(x, y, "#440a87", 40, 80)
-   }, 1000)
-   return true;
-}
+// function deleteCheese() {
+//    cheese.alive = false;
+//    setTimeout(function(){
+//    let x = Math.floor(Math.random() * game.width - 100) + 50; 
+//        let y = Math.floor(Math.random() * game.height -100) + 50;
+//       cheese = new Crawler(x, y, "#440a87", 40, 80)
+//    }, 1000)
+//    return true;
+// }
  
  
+// function addNewcheese() {
+//     mouse.alive = false;
+//     setTimeout(function(){
+//         let x = Math.floor(Math.random() * game.width - 100) + 50; 
+//         let y = Math.floor(Math.random() * game.height -100) + 50;
+//        mouse = new Crawler(x, y, "#440a87", 40, 80)
+//     }, 1000)
+//     return true;
+//  }
+  
