@@ -19,6 +19,4 @@ JavaScript (logic and DOM manipulation)
 Canvas 
 
 ## Wireframes (what game will look like):
-
-
-<img alt="image of game" src="imag/Screen Shot 2022-05-24 at 7.20.12 PM.png" width="650">
+< img src = "/Users/jrbre/Desktop/Screen Shot 2022-05-24 at 10.08.07 PM.png">
