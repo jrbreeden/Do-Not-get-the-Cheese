@@ -1,6 +1,10 @@
 let game = document.querySelector("#game");
 let mouse;
+let purple = "#0a8387";
 let mousetrap;
+let green = "#440a87";
+let cheese;
+let yellow = "#F9F871";
 let ctx = game.getContext("2d"); 
 let score = document.querySelector('#score');
 let movement = document.querySelector('#movement');
@@ -27,17 +31,18 @@ class Crawler {
 
  
 
-window.addEventListener("DOMContentLoaded", function (e){
-  mousetrap = new Crawler(10, 20, "#440a87", 20, 20);
-   mouse = new Crawler(100, 100, "#0a8387", 40, 80);
+window.addEventListener("DOMContentLoaded", function (p){
+  mousetrap = new Crawler(10, 20, green, 80, 80);
+   mouse = new Crawler(100, 100, purple, 60, 70);
+  cheese = new Crawler(500, 300, yellow, 40, 50);
   
-   const runGame = setInterval(gameLoop, 120);
+  const runGame = setInterval(gameLoop, 120);
 })
  
 // KEYBOARD INTERACTION LOGIC
- 
-function movementHandler(e){
-   console.log("the key that was pressed was: " + e.key);
+
+function movementHandler(p){
+   console.log("the key that was pressed was: " + p.key);
  
    // if(e.key === "ArrowUp"){
  
@@ -55,7 +60,7 @@ function movementHandler(e){
    // ternary operator basic logic
    // condition ? yes : no
  
-   switch (e.key){
+   switch (p.key){
        case "ArrowUp":
          
            mousetrap.y > 0 ?  mousetrap.y -= 10  :  null;
@@ -82,10 +87,11 @@ function gameLoop(){
    movement.textContent = `X: ${mousetrap.x}\n Y: ${mousetrap.y}`;
    if (mouse.alive){
        mouse.render();
-       let hit = detectHit(mousetrap, mouse);
+       let hit = detectHit(mousetrap, mouse, cheese);
    }
  
    mousetrap.render();
+  cheese.render();
 }
  
 function detectHit(p1, p2){
@@ -105,8 +111,8 @@ function detectHit(p1, p2){
    }
 }
  
-function addNewShrek() {
-   shrek.alive = false;
+function addNewMouse() {
+   mouse.alive = false;
    setTimeout(function(){
        let x = Math.floor(Math.random() * game.width - 100) + 50; 
        let y = Math.floor(Math.random() * game.height -100) + 50;
@@ -114,7 +120,7 @@ function addNewShrek() {
        
            x = 50
        
-       mouse = new Crawler(x, y, "#bada55", 40, 80)
+       mouse = new Crawler(x, y, "#0a8387", 40, 80)
    }, 1000)
    return true;
 }
