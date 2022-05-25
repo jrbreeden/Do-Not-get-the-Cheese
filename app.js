@@ -32,9 +32,14 @@ class Crawler {
  
 
 window.addEventListener("DOMContentLoaded", function (p){
-  mousetrap = new Crawler(10, 20, green, 80, 80);
-   mouse = new Crawler(100, 100, purple, 60, 70);
-  cheese = new Crawler(500, 300, yellow, 40, 50);
+ let randomX = Math.floor(Math.random() * game.width);
+ let randomY = Math.floor(Math.random() * game.height);
+ let cheeseX = Math.floor(Math.random() * game.width);
+ let cheeseY = Math.floor(Math.random() * game.height);
+ 
+  mousetrap = new Crawler(randomX, randomY, green, 80, 80);
+  mouse = new Crawler(100, 100, purple, 60, 70);
+  cheese = new Crawler(cheeseX, cheeseY, yellow, 40, 50);
   
   const runGame = setInterval(gameLoop, 120);
 })
@@ -63,20 +68,20 @@ function movementHandler(p){
    switch (p.key){
        case "ArrowUp":
          
-           mousetrap.y > 0 ?  mousetrap.y -= 10  :  null;
+           mouse.y > 0 ?  mouse.y -= 10  :  null;
            break
        case "ArrowDown":
-           mousetrap.y < (game.height - mousetrap.height) ? mousetrap.y += 10 : null;
+           mouse.y < (game.height - mouse.height) ? mouse.y += 10 : null;
            break
        case "ArrowLeft":
-           mousetrap.x > 0 ? mousetrap.x -= 10 : null;
+           mouse.x > 0 ? mouse.x -= 10 : null;
            break
        case "ArrowRight":
-           mousetrap.x < (game.width - mousetrap.width) ? mousetrap.x += 10 : null;
+           mouse.x < (game.width - mouse.width) ? mouse.x += 10 : null;
            break
    }
  
-   console.log(mousetrap);
+   console.log(mouse);
  
 }
  
@@ -84,43 +89,60 @@ document.addEventListener("keydown", movementHandler)
  
 function gameLoop(){
    ctx.clearRect(0, 0, game.width, game.height);
-   movement.textContent = `X: ${mousetrap.x}\n Y: ${mousetrap.y}`;
+   movement.textContent = `X: ${mouse.x}\n Y: ${mouse.y}`;
    if (mouse.alive){
        mouse.render();
-       let hit = detectHit(mousetrap, mouse, cheese);
+       let hit = detectHit(mouse, mousetrap);
+       let point = detectCheese(mouse, cheese);
    }
- 
+   mouse.render();
    mousetrap.render();
-  cheese.render();
+   cheese.render();
 }
  
-function detectHit(p1, p2){
+function detectHit(p1, obstacle){
    let hitTest =
-       p1.y + p1.height > p2.y &&
-       p1.y < p2.y + p2.height &&
-       p1.x + p1.width > p2.x &&
-       p1.x < p2.x + p2.width; 
+       p1.y + p1.height > obstacle.y &&
+       p1.y < obstacle.y + obstacle.height &&
+       p1.x + p1.width > obstacle.x &&
+       p1.x < obstacle.x + obstacle.width; 
  
    if (hitTest){
        
   let gameScore = Number(score.textContent); 
        let newScore = gameScore + 100;
+       score.textContent = newScore;
        return addNewMouse();
    } else{
        return false;
    }
 }
+
+ function detectCheese(p1, cheese){
+    let hitTest =
+        p1.y + p1.height > cheese.y &&
+        p1.y < cheese.y + cheese.height &&
+        p1.x + p1.width > cheese.x &&
+        p1.x < cheese.x + cheese.width; 
+  
+    if (hitTest){
+        // if (mousetrap) x and y are with 10px of cheese x y, then player1 will lose life and game restarts
+        // else cheese is further away, collect cheese and collect point
+   let gameScore = Number(score.textContent); 
+        let newScore = gameScore + 100;
+        score.textContent = newScore;
+        return addNewMouse();
+    } else{
+        return false;
+    }
+ }
  
 function addNewMouse() {
    mouse.alive = false;
    setTimeout(function(){
        let x = Math.floor(Math.random() * game.width - 100) + 50; 
        let y = Math.floor(Math.random() * game.height -100) + 50;
-      
-       
-           x = 50
-       
-       mouse = new Crawler(x, y, "#0a8387", 40, 80)
+      mouse = new Crawler(x, y, "#0a8387", 40, 80)
    }, 1000)
    return true;
 }
