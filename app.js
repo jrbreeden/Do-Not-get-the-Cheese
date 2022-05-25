@@ -95,9 +95,13 @@ function gameLoop(){
        let hit = detectHit(mouse, mousetrap);
        let point = detectCheese(mouse, cheese);
    }
+   if (cheese.alive){
+       cheese.render();
+    
+   }
    mouse.render();
    mousetrap.render();
-   cheese.render();
+  
 }
  
 function detectHit(p1, obstacle){
@@ -125,16 +129,18 @@ function detectHit(p1, obstacle){
         p1.x < cheese.x + cheese.width; 
   
     if (cheeseTest){
+        cheese.alive = false;
         // if (mousetrap) x and y are within 10px of cheese x y, then player1 will lose life and game restarts
         // else cheese is further away, collect cheese and collect point
         let gameScore = Number(score.textContent); 
-        let newScore = gameScore + 100;
-        score.textContent = newScore;
-        return false;
-      
-    } else{
-        return false;
-    }
+       let newScore = gameScore + 100;
+       score.textContent = newScore;
+       return false;
+   } else{
+       return false;
+   }
+        
+    
  }
  
 // function deleteCheese() {
