@@ -21,4 +21,4 @@ Canvas
 ## Wireframes (what game will look like):
 
 
-<img alt="image of game" src="imag/Screen Shot 2022-05-24 at 7.20.12 PM.png" width="650">
+<img src="imag/Screen Shot 2022-05-24 at 7.20.12 PM.png" width="650">
