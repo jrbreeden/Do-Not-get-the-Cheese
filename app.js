@@ -126,7 +126,13 @@ function detectHit(p1, obstacle){
         p1.x < cheese.x + cheese.width; 
   
     if (hitTest){
-        // if (mousetrap) x and y are with 10px of cheese x y, then player1 will lose life and game restarts
+        if (mousetrap.X + mousetrap.Y ){
+            //     run this code
+            // } else {
+            //     run this code
+            // }
+        
+        // if (mousetrap) x and y are within 10px of cheese x y, then player1 will lose life and game restarts
         // else cheese is further away, collect cheese and collect point
    let gameScore = Number(score.textContent); 
         let newScore = gameScore + 100;
@@ -142,7 +148,7 @@ function addNewMouse() {
    setTimeout(function(){
        let x = Math.floor(Math.random() * game.width - 100) + 50; 
        let y = Math.floor(Math.random() * game.height -100) + 50;
-      mouse = new Crawler(x, y, "#0a8387", 40, 80)
+      mouse = new Crawler(x, y, "#440a87", 40, 80)
    }, 1000)
    return true;
 }
