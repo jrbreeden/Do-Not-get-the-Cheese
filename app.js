@@ -1,8 +1,8 @@
 let game = document.querySelector("#game");
 let mouse;
-let purple = "#0a8387";
+let purple = "#440a87";
 let mousetrap;
-let green = "#440a87";
+let green = "#0a8387";
 let cheese;
 let yellow = "#F9F871";
 let ctx = game.getContext("2d"); 
@@ -37,8 +37,8 @@ window.addEventListener("DOMContentLoaded", function (p){
  let cheeseX = Math.floor(Math.random() * game.width);
  let cheeseY = Math.floor(Math.random() * game.height);
  
+ mouse = new Crawler(100, 100, purple, 60, 70);
   mousetrap = new Crawler(randomX, randomY, green, 80, 80);
-  mouse = new Crawler(100, 100, purple, 60, 70);
   cheese = new Crawler(cheeseX, cheeseY, yellow, 40, 50);
   
   const runGame = setInterval(gameLoop, 120);
