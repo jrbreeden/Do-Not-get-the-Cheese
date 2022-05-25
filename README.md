@@ -23,4 +23,4 @@ Canvas
 
 
 
-<img alt="image of game" src="imag/Screen Shot 2022-05-24 at 10.08.07 PM.png" width="600">
+<img alt="image of game" src="imag/Screen Shot 2022-05-24 at 10.08.07 PM.png" width="500">
