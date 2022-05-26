@@ -38,19 +38,7 @@ class Crawler {
 
  
 
-window.addEventListener("DOMContentLoaded", function (p){
- let randomX = Math.floor(Math.random() * game.width) - 80;
- let randomY = Math.floor(Math.random() * game.height) - 80;
- let cheeseX = Math.floor(Math.random() * game.width) - 50;
- let cheeseY = Math.floor(Math.random() * game.height) - 40;
- 
- mouse = new Crawler(100, 100, mouseImage, 60, 70);
- mousetrap = new Crawler(randomX, randomY, mousetrapImage, 80, 80);
-cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
-  
-  const runGame = setInterval(gameLoop, 60);
-  console.log("DOMContentLoaded ran")
-})
+
  
 // KEYBOARD INTERACTION LOGIC
 
@@ -189,3 +177,16 @@ function detectHit(){
 //     return true;
 //  }
   
+window.addEventListener("DOMContentLoaded", function (p){
+    let randomX = Math.floor(Math.random() * game.width) - 80;
+    let randomY = Math.floor(Math.random() * game.height) - 80;
+    let cheeseX = Math.floor(Math.random() * game.width) - 50;
+    let cheeseY = Math.floor(Math.random() * game.height) - 40;
+    
+    mouse = new Crawler(100, 100, mouseImage, 60, 70);
+    mousetrap = new Crawler(randomX, randomY, mousetrapImage, 80, 80);
+   cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
+     
+     const runGame = setInterval(gameLoop, 60);
+     console.log("DOMContentLoaded ran")
+   })
