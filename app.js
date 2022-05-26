@@ -1,5 +1,5 @@
 let game = document.querySelector("#game");
-
+console.log("testing")
 let ctx = game.getContext("2d"); 
 let score = document.querySelector('#score');
 let movement = document.querySelector('#movement');
