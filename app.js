@@ -8,24 +8,31 @@ let yellow = "#F9F871";
 let ctx = game.getContext("2d"); 
 let score = document.querySelector('#score');
 let movement = document.querySelector('#movement');
- 
+ let mouseImage = document.querySelector("#mouse");
+ let cheeseImage = document.querySelector("#cheese");
+ let mousetrapImage = document.querySelector("#mousetrap");
 game.setAttribute("height", getComputedStyle(game)["height"]);
 game.setAttribute("width", getComputedStyle(game)["width"]);
  
 class Crawler {
-   constructor(x, y, color, width, height){
+   constructor(x, y, image, width, height){
        this.x = x;
        this.y = y;
-       this.color = color;
+       this.image = image;
        this.height = height;
        this.width = width;
        this.alive = true;
    }
  
    render() {
-       ctx.fillStyle = this.color;
-       ctx.fillRect(this.x, this.y, this.width, this.height)
+    //    ctx.fillStyle = this.color;
+    //    ctx.fillRect(this.x, this.y, this.width, this.height)
+    ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+    
    }
+   
+
+
 }
  
 
@@ -37,9 +44,9 @@ window.addEventListener("DOMContentLoaded", function (p){
  let cheeseX = Math.floor(Math.random() * game.width) - 50;
  let cheeseY = Math.floor(Math.random() * game.height) - 40;
  
- mouse = new Crawler(100, 100, purple, 60, 70);
- mousetrap = new Crawler(randomX, randomY, green, 80, 80);
-cheese = new Crawler(cheeseX, cheeseY, yellow, 40, 50);
+ mouse = new Crawler(100, 100, mouseImage, 60, 70);
+ mousetrap = new Crawler(randomX, randomY, mousetrapImage, 80, 80);
+cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
   
   const runGame = setInterval(gameLoop, 120);
 })
