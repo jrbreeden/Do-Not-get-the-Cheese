@@ -49,6 +49,7 @@ window.addEventListener("DOMContentLoaded", function (p){
 cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
   
   const runGame = setInterval(gameLoop, 60);
+  console.log("DOMContentLoaded ran")
 })
  
 // KEYBOARD INTERACTION LOGIC
