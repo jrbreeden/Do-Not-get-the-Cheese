@@ -32,10 +32,10 @@ class Crawler {
  
 
 window.addEventListener("DOMContentLoaded", function (p){
- let randomX = Math.floor(Math.random() * game.width);
- let randomY = Math.floor(Math.random() * game.height);
- let cheeseX = Math.floor(Math.random() * game.width);
- let cheeseY = Math.floor(Math.random() * game.height);
+ let randomX = Math.floor(Math.random() * game.width) - 80;
+ let randomY = Math.floor(Math.random() * game.height) - 80;
+ let cheeseX = Math.floor(Math.random() * game.width) - 50;
+ let cheeseY = Math.floor(Math.random() * game.height) - 40;
  
  mouse = new Crawler(100, 100, purple, 60, 70);
  mousetrap = new Crawler(randomX, randomY, green, 80, 80);
@@ -88,45 +88,59 @@ function movementHandler(p){
 document.addEventListener("keydown", movementHandler)
  
 function gameLoop(){
+    if(cheese.alive) {
+        detectCheese()
+        detectHit()
+    }
    ctx.clearRect(0, 0, game.width, game.height);
    movement.textContent = `X: ${mouse.x}\n Y: ${mouse.y}`;
    if (mouse.alive){
        mouse.render();
-       let hit = detectHit(mouse, mousetrap);
-       let point = detectCheese(mouse, cheese);
+        // let hit = detectHit(mouse, mousetrap);
+       // let point = detectCheese(mouse, cheese);
    }
    if (cheese.alive){
        cheese.render();
-    
-   }
+    }
+    if (!cheese.alive && mousetrap.alive){
+    let x = Math.floor(Math.random() * game.width) - 50;
+    let y = Math.floor(Math.random() * game.height) - 40;
+    cheese = new Crawler(x, y, yellow, 40, 50);
+    mousetrap.alive = false;
+    let x2 = Math.floor(Math.random() * game.width) - 80;
+    let y2 = Math.floor(Math.random() * game.height) - 80;
+    mousetrap = new Crawler(x2, y2, green, 80, 80);
+    }
    mouse.render();
    mousetrap.render();
   
 }
  
-function detectHit(p1, obstacle){
+function detectHit(){
    let hitTest =
-       p1.y + p1.height > obstacle.y &&
-       p1.y < obstacle.y + obstacle.height &&
-       p1.x + p1.width > obstacle.x &&
-       p1.x < obstacle.x + obstacle.width; 
+       mouse.y +mouse.height > mousetrap.y &&
+    mouse.y < mousetrap.y + mousetrap.height &&
+       mouse.x + mouse.width > mousetrap.x &&
+       mouse.x < mousetrap.x + mousetrap.width; 
  
    if (hitTest){
-      let gameScore = Number(score.textContent); 
+      mousetrap.alive = false;
+      cheese.alive = false;
+    let gameScore = Number(score.textContent); 
        let newScore = gameScore - 100;
        score.textContent = newScore;
-       return false;
-   } else{
-       return false;
+       if (confirm("Oh No, the trap got you!")) {
+           window.location.reload();
+       }
    }
 }
 
- function detectCheese(p1, cheese){
+ function detectCheese(){
     let cheeseTest =
-        p1.y + p1.height > cheese.y &&
-        p1.y < cheese.y + cheese.height &&
-        p1.x + p1.width > cheese.x &&
-        p1.x < cheese.x + cheese.width; 
+        mouse.y + mouse.height > cheese.y &&
+        mouse.y < cheese.y + cheese.height &&
+        mouse.x + mouse.width > cheese.x &&
+        mouse.x < cheese.x + cheese.width; 
   
     if (cheeseTest){
         cheese.alive = false;
@@ -135,7 +149,7 @@ function detectHit(p1, obstacle){
         let gameScore = Number(score.textContent); 
        let newScore = gameScore + 100;
        score.textContent = newScore;
-       return false;
+       
    } else{
        return false;
    }
