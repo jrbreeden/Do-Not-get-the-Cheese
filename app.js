@@ -1,19 +1,24 @@
 let game = document.querySelector("#game");
-let mouse;
-let purple = "#440a87";
-let mousetrap;
-let green = "#0a8387";
-let cheese;
-let yellow = "#F9F871";
+
 let ctx = game.getContext("2d"); 
 let score = document.querySelector('#score');
 let movement = document.querySelector('#movement');
  let mouseImage = document.querySelector("#mouse");
  let cheeseImage = document.querySelector("#cheese");
  let mousetrapImage = document.querySelector("#mousetrap");
+
+ let randomX = Math.floor(Math.random() * game.width) - 80;
+    let randomY = Math.floor(Math.random() * game.height) - 80;
+    let cheeseX = Math.floor(Math.random() * game.width) - 50;
+    let cheeseY = Math.floor(Math.random() * game.height) - 40;
+    
 game.setAttribute("height", getComputedStyle(game)["height"]);
 game.setAttribute("width", getComputedStyle(game)["width"]);
+
+const runGame = setInterval(gameLoop, 60);
  
+
+
 class Crawler {
    constructor(x, y, image, width, height){
        this.x = x;
@@ -24,6 +29,8 @@ class Crawler {
        this.alive = true;
    }
  
+
+
    render() {
     //    ctx.fillStyle = this.color;
     //    ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -34,6 +41,9 @@ class Crawler {
 
 
 }
+let mouse = new Crawler(100, 100, mouseImage, 60, 70);
+let mousetrap = new Crawler(randomX, randomY, mousetrapImage, 80, 80);
+let cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
  
 
  
@@ -177,16 +187,3 @@ function detectHit(){
 //     return true;
 //  }
   
-window.addEventListener("DOMContentLoaded", function (p){
-    let randomX = Math.floor(Math.random() * game.width) - 80;
-    let randomY = Math.floor(Math.random() * game.height) - 80;
-    let cheeseX = Math.floor(Math.random() * game.width) - 50;
-    let cheeseY = Math.floor(Math.random() * game.height) - 40;
-    
-    mouse = new Crawler(100, 100, mouseImage, 60, 70);
-    mousetrap = new Crawler(randomX, randomY, mousetrapImage, 80, 80);
-   cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
-     
-     const runGame = setInterval(gameLoop, 60);
-     console.log("DOMContentLoaded ran")
-   })
