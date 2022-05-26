@@ -3,14 +3,14 @@ console.log("testing")
 let ctx = game.getContext("2d"); 
 let score = document.querySelector('#score');
 let movement = document.querySelector('#movement');
- let mouseImage = document.querySelector("#mouse");
- let cheeseImage = document.querySelector("#cheese");
- let mousetrapImage = document.querySelector("#mousetrap");
+let mouseImage = document.querySelector("#mouse");
+let cheeseImage = document.querySelector("#cheese");
+let mousetrapImage = document.querySelector("#mousetrap");
 
  let randomX = Math.floor(Math.random() * game.width) - 80;
-    let randomY = Math.floor(Math.random() * game.height) - 80;
-    let cheeseX = Math.floor(Math.random() * game.width) - 50;
-    let cheeseY = Math.floor(Math.random() * game.height) - 40;
+ let randomY = Math.floor(Math.random() * game.height) - 80;
+ let cheeseX = Math.floor(Math.random() * game.width) - 50;
+ let cheeseY = Math.floor(Math.random() * game.height) - 40;
     
 game.setAttribute("height", getComputedStyle(game)["height"]);
 game.setAttribute("width", getComputedStyle(game)["width"]);
@@ -136,7 +136,7 @@ function detectHit(){
        let newScore = gameScore - 100;
        score.textContent = newScore;
        alert("Oh No, the trap got you!")
-       document.location.reload();
+      document.location.reload();
        
     //    if (confirm("Oh No, the trap got you!")) {
     //        window.location.reload();
