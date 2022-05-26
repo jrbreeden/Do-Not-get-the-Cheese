@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", function (p){
  mousetrap = new Crawler(randomX, randomY, mousetrapImage, 80, 80);
 cheese = new Crawler(cheeseX, cheeseY, cheeseImage, 40, 50);
   
-  const runGame = setInterval(gameLoop, 120);
+  const runGame = setInterval(gameLoop, 60);
 })
  
 // KEYBOARD INTERACTION LOGIC
@@ -112,11 +112,11 @@ function gameLoop(){
     if (!cheese.alive && mousetrap.alive){
     let x = Math.floor(Math.random() * game.width) - 50;
     let y = Math.floor(Math.random() * game.height) - 40;
-    cheese = new Crawler(x, y, yellow, 40, 50);
+    cheese = new Crawler(x, y, cheeseImage, 40, 50);
     mousetrap.alive = false;
     let x2 = Math.floor(Math.random() * game.width) - 80;
     let y2 = Math.floor(Math.random() * game.height) - 80;
-    mousetrap = new Crawler(x2, y2, green, 80, 80);
+    mousetrap = new Crawler(x2, y2, mousetrapImage, 80, 80);
     }
    mouse.render();
    mousetrap.render();
@@ -136,9 +136,12 @@ function detectHit(){
     let gameScore = Number(score.textContent); 
        let newScore = gameScore - 100;
        score.textContent = newScore;
-       if (confirm("Oh No, the trap got you!")) {
-           window.location.reload();
-       }
+       alert("Oh No, the trap got you!")
+       document.location.reload();
+       
+    //    if (confirm("Oh No, the trap got you!")) {
+    //        window.location.reload();
+     //  }
    }
 }
 
