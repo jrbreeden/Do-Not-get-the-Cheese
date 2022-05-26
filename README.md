@@ -1,5 +1,5 @@
 Do Not Get the Cheese
-Premise: The board game Mousetrap was my favorite game to play with my brother. I wanted to use my love for the game to create a fun project for people of all ages to play.
+Premise: The board game Mousetrap was my favorite game to play with my brother as a child. I wanted to use my love for the game to create a fun project for people of all ages to play.
 User Story:
 As a user I want to:
 .Trap the mouse from getting the cheese with a mousetrap.
@@ -20,9 +20,6 @@ Canvas
 
 ## Wireframes (what game will look like):
 
-
-
-
 <img width="1616" alt="Screen Shot 2022-05-24 at 10 08 07 PM" src="https://user-images.githubusercontent.com/104262263/170167296-ed4a5620-91ab-4745-91da-b28d68263ad6.png">
 
-<img src ="img/Screen Shot 2022-05-25 at 8.45.19 PM.png">
+<img src ="img/Screen Shot 2022-05-26 at 10.37.33 AM.png">
