@@ -7,10 +7,10 @@ let mouseImage = document.querySelector("#mouse");
 let cheeseImage = document.querySelector("#cheese");
 let mousetrapImage = document.querySelector("#mousetrap");
 
- let randomX = Math.floor(Math.random() * game.width) - 80;
- let randomY = Math.floor(Math.random() * game.height) - 80;
- let cheeseX = Math.floor(Math.random() * game.width) - 50;
- let cheeseY = Math.floor(Math.random() * game.height) - 40;
+ let randomX = Math.floor(Math.random() * (game.width - 80));
+ let randomY = Math.floor(Math.random() * (game.height - 80));
+ let cheeseX = Math.floor(Math.random() * (game.width - 50));
+ let cheeseY = Math.floor(Math.random() * (game.height - 40));
     
 game.setAttribute("height", getComputedStyle(game)["height"]);
 game.setAttribute("width", getComputedStyle(game)["width"]);
@@ -94,10 +94,11 @@ function movementHandler(p){
 document.addEventListener("keydown", movementHandler)
  
 function gameLoop(){
-    if(cheese.alive) {
-        detectCheese()
-        detectHit()
-    }
+  //  if(cheese.alive) {
+  //   cheese.render();
+        
+  //  }
+   
    ctx.clearRect(0, 0, game.width, game.height);
    movement.textContent = `X: ${mouse.x}\n Y: ${mouse.y}`;
    if (mouse.alive){
@@ -105,21 +106,23 @@ function gameLoop(){
         // let hit = detectHit(mouse, mousetrap);
        // let point = detectCheese(mouse, cheese);
    }
-   if (cheese.alive){
-       cheese.render();
-    }
+   
     if (!cheese.alive && mousetrap.alive){
-    let x = Math.floor(Math.random() * game.width) - 50;
-    let y = Math.floor(Math.random() * game.height) - 40;
+    let x = Math.floor(Math.random() * (game.width -50));
+    let y = Math.floor(Math.random() * (game.height - 40));
     cheese = new Crawler(x, y, cheeseImage, 40, 50);
     mousetrap.alive = false;
-    let x2 = Math.floor(Math.random() * game.width) - 80;
-    let y2 = Math.floor(Math.random() * game.height) - 80;
-    mousetrap = new Crawler(x2, y2, mousetrapImage, 80, 80);
-    }
+    let x2 = Math.floor(Math.random() * (game.width - 80));
+    let y2 = Math.floor(Math.random() * (game.height - 80));
+    mousetrap = new Crawler(x2, y2, mousetrapImage, 80, 80);}
+
+
    mouse.render();
    mousetrap.render();
-  
+  cheese.render();
+   detectCheese();
+   detectHit();
+   
 }
  
 function detectHit(){
@@ -132,10 +135,11 @@ function detectHit(){
    if (hitTest){
       mousetrap.alive = false;
       cheese.alive = false;
+      mouse.alive = false;
     let gameScore = Number(score.textContent); 
        let newScore = gameScore - 100;
        score.textContent = newScore;
-       alert("Oh No, the trap got you!")
+     console.log("Oh No, the trap got you!")
       document.location.reload();
        
     //    if (confirm("Oh No, the trap got you!")) {
@@ -158,7 +162,7 @@ function detectHit(){
         let gameScore = Number(score.textContent); 
        let newScore = gameScore + 100;
        score.textContent = newScore;
-       
+       checkWinner();
    } else{
        return false;
    }
@@ -166,24 +170,10 @@ function detectHit(){
     
  }
  
-// function deleteCheese() {
-//    cheese.alive = false;
-//    setTimeout(function(){
-//    let x = Math.floor(Math.random() * game.width - 100) + 50; 
-//        let y = Math.floor(Math.random() * game.height -100) + 50;
-//       cheese = new Crawler(x, y, "#440a87", 40, 80)
-//    }, 1000)
-//    return true;
-// }
- 
- 
-// function addNewcheese() {
-//     mouse.alive = false;
-//     setTimeout(function(){
-//         let x = Math.floor(Math.random() * game.width - 100) + 50; 
-//         let y = Math.floor(Math.random() * game.height -100) + 50;
-//        mouse = new Crawler(x, y, "#440a87", 40, 80)
-//     }, 1000)
-//     return true;
-//  }
-  
+function checkWinner() {
+  if (score.textContent == 1000) {
+      setTimeout(() => {
+      alert("You won!");
+      }, 500)
+  }
+}
