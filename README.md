@@ -30,6 +30,6 @@ https://jrbreeden.github.io/Get-the-Cheese/
 
 ## Wireframes (what game will look like):
 
-<img width="1616" src="img/Get the Cheese wireframe.png" alt="img/Get the Cheese wireframe.png">
+<img width="1616" src="img/Get the Cheese wireframe.png">
 
 <img src ="img/Get the Cheese.png">
