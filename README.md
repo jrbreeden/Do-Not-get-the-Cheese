@@ -1,4 +1,4 @@
-# Do Not Get the Cheese
+#  Get the Cheese
 Premise: The board game Mousetrap was my favorite game to play with my brother as a child. I wanted to use my love for the game to create a fun project for people of all ages to play.
 
 User Story:
@@ -23,8 +23,10 @@ Installation Instructions:
 * Download Zipfile
 * Open index.html
 
-# Game Link 
-https://jrbreeden.github.io/Do-Not-get-the-Cheese/
+
+# Gamelink
+https://jrbreeden.github.io/Get-the-Cheese/
+
 
 ## Wireframes (what game will look like):
 
