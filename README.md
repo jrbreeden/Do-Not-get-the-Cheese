@@ -24,7 +24,7 @@ Installation Instructions:
 * Open index.html
 
 # Gamelink
-https://jrbreeden.github.io/Do-Not-get-the-Cheese/
+https://jrbreeden.github.io/Get-the-Cheese/
 
 
 ## Wireframes (what game will look like):
