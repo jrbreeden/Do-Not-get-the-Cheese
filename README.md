@@ -30,6 +30,6 @@ https://jrbreeden.github.io/Get-the-Cheese/
 
 ## Wireframes (what game will look like):
 
-<img width="1616" alt="Screen Shot 2022-05-24 at 10 08 07 PM" src="https://user-images.githubusercontent.com/104262263/170167296-ed4a5620-91ab-4745-91da-b28d68263ad6.png">
+<img width="1616" src="img/Get the Cheese wireframe.png">
 
-<img src ="img/Screen Shot 2022-05-26 at 10.37.33 AM.png">
+<img src ="img/Get the Cheese.png">
